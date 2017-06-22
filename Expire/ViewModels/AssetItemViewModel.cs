@@ -13,13 +13,13 @@ namespace Expire.ViewModels
 				StartDate = DateTime.Today,
 				EndDate = DateTime.Today.AddYears(1)
 			};
-            Title = "New";
+            Title = "新建";
         }
 
         public AssetItemViewModel(AssetItem model)
         {
             _model = model;
-            Title = "Edit";
+            Title = "编辑";
         }
 
         public string Title

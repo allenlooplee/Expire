@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Expire.Views.EditAssetItemPage"
+    Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="SaveButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="Asset Information">
+                    <EntryCell Label="Name" Text="{Binding Name, Mode=TwoWay}" Placeholder="Enter the name of the item." Keyboard="Text"/>
+                    <EntryCell Label="Price" Text="{Binding Price, Mode=TwoWay}" Placeholder="Enter the price of the item." Keyboard="Numeric"/>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Start Date" VerticalOptions="Center" Margin="16,0,0,0"/>
+                            <DatePicker Date="{Binding StartDate, Mode=TwoWay}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="End Date" VerticalOptions="Center" Margin="16,0,0,0"/>
+                            <DatePicker Date="{Binding EndDate, Mode=TwoWay}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        </Grid>
+                    </ViewCell>
+                    <EntryCell Label="Remark" Text="{Binding Remark, Mode=TwoWay}" Placeholder="Enter the remark of the item." Keyboard="Text"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </StackLayout>
+</ContentPage>

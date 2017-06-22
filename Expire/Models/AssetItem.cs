@@ -10,11 +10,11 @@ namespace Expire.Models
             set;
         }
 
-        public string Remark
-        {
-            get;
-            set;
-        }
+        public decimal Price
+		{
+			get;
+			set;
+		}
 
         public DateTime StartDate
         {
@@ -27,5 +27,11 @@ namespace Expire.Models
             get;
             set;
         }
+
+		public string Remark
+		{
+			get;
+			set;
+		}
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Expire.Views.ViewAssetItemPage"
+    Title="{Binding Name}">
+	<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="EditButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout Margin="16">
+        <Label Text="{Binding Price, StringFormat='Price: {0}'}"/>
+        <Label Text="{Binding AverageValue, StringFormat='Average: {0:f2}'}"/>
+        <Label Text="{Binding StartDate, StringFormat='Start date: {0:d}'}"/>
+        <Label Text="{Binding EndDate, StringFormat='End date: {0:d}'}"/>
+        <Label Text="{Binding ElapsedRate, StringFormat='Elapsed: {0:p2}'}"/>
+        <Label Text="{Binding Remark}"/>
+    </StackLayout>
+</ContentPage>

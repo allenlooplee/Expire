@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Expire.Views.MainPage">
-	<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Expire.Views.MainPage"
+    Title="Asset List">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Clicked="NewButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+	<ListView ItemsSource="{Binding AssetList}" ItemTapped="ListView_ItemTapped">
+        <!--<ListView.Triggers>
+            <EventTrigger Event="ItemTapped">
+                
+            </EventTrigger>
+        </ListView.Triggers>-->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Remove" Command="{Binding RemoveCommand}" IsDestructive="true"/>
+                    </ViewCell.ContextActions>
+                    <Grid VerticalOptions="Center" Margin="16,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Name}" Grid.Column="0"/>
+                        <Label Text="{Binding Price}" Grid.Column="1"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

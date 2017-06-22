@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Expire.Views;
 
 namespace Expire
 {
@@ -8,7 +9,7 @@ namespace Expire
         {
             InitializeComponent();
 
-            MainPage = new ExpirePage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

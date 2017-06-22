@@ -5,14 +5,14 @@
     x:Class="Expire.Views.ViewAssetItemPage"
     Title="{Binding Name}">
 	<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Edit" Clicked="EditButton_Clicked"/>
+        <ToolbarItem Text="编辑" Clicked="EditButton_Clicked"/>
     </ContentPage.ToolbarItems>
     <StackLayout Margin="16">
-        <Label Text="{Binding Price, StringFormat='Price: {0}'}"/>
-        <Label Text="{Binding AverageValue, StringFormat='Average: {0:f2}'}"/>
-        <Label Text="{Binding StartDate, StringFormat='Start date: {0:d}'}"/>
-        <Label Text="{Binding EndDate, StringFormat='End date: {0:d}'}"/>
-        <Label Text="{Binding ElapsedRate, StringFormat='Elapsed: {0:p2}'}"/>
+        <Label Text="{Binding Price, StringFormat='价格: {0}'}"/>
+        <Label Text="{Binding AverageValue, StringFormat='日均价格: {0:f2}'}"/>
+        <Label Text="{Binding StartDate, StringFormat='开始日期: {0:d}'}"/>
+        <Label Text="{Binding EndDate, StringFormat='结束日期: {0:d}'}"/>
+        <Label Text="{Binding ElapsedRate, StringFormat='耗损比例: {0:p2}'}"/>
         <Label Text="{Binding Remark}"/>
     </StackLayout>
 </ContentPage>

@@ -5,21 +5,21 @@
     x:Class="Expire.Views.EditAssetItemPage"
     Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="SaveButton_Clicked"/>
+        <ToolbarItem Text="保存" Clicked="SaveButton_Clicked"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
         <TableView Intent="Form">
             <TableRoot>
                 <TableSection Title="Asset Information">
-                    <EntryCell Label="Name" Text="{Binding Name, Mode=TwoWay}" Placeholder="Enter the name of the item." Keyboard="Text"/>
-                    <EntryCell Label="Price" Text="{Binding Price, Mode=TwoWay}" Placeholder="Enter the price of the item." Keyboard="Numeric"/>
+                    <EntryCell Label="名称" Text="{Binding Name, Mode=TwoWay}" Placeholder="输入名称" Keyboard="Text"/>
+                    <EntryCell Label="价格" Text="{Binding Price, Mode=TwoWay}" Keyboard="Numeric"/>
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2.5*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="Start Date" VerticalOptions="Center" Margin="16,0,0,0"/>
+                            <Label Text="开始日期" VerticalOptions="Center" Margin="16,0,0,0"/>
                             <DatePicker Date="{Binding StartDate, Mode=TwoWay}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
                         </Grid>
                     </ViewCell>
@@ -29,11 +29,11 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2.5*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="End Date" VerticalOptions="Center" Margin="16,0,0,0"/>
+                            <Label Text="结束日期" VerticalOptions="Center" Margin="16,0,0,0"/>
                             <DatePicker Date="{Binding EndDate, Mode=TwoWay}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
                         </Grid>
                     </ViewCell>
-                    <EntryCell Label="Remark" Text="{Binding Remark, Mode=TwoWay}" Placeholder="Enter the remark of the item." Keyboard="Text"/>
+                    <EntryCell Label="备注" Text="{Binding Remark, Mode=TwoWay}" Placeholder="输入备注" Keyboard="Text"/>
                 </TableSection>
             </TableRoot>
         </TableView>

@@ -5,7 +5,7 @@
     x:Class="Expire.Views.MainPage"
     Title="Asset List">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New" Clicked="NewButton_Clicked"/>
+        <ToolbarItem Text="新建" Clicked="NewButton_Clicked"/>
     </ContentPage.ToolbarItems>
 	<ListView ItemsSource="{Binding AssetList}" ItemTapped="ListView_ItemTapped">
         <!--<ListView.Triggers>
@@ -17,7 +17,7 @@
             <DataTemplate>
                 <ViewCell>
                     <ViewCell.ContextActions>
-                        <MenuItem Text="Remove" Command="{Binding RemoveCommand}" IsDestructive="true"/>
+                        <MenuItem Text="删除" Command="{Binding RemoveCommand}" IsDestructive="true"/>
                     </ViewCell.ContextActions>
                     <Grid VerticalOptions="Center" Margin="16,0">
                         <Grid.ColumnDefinitions>

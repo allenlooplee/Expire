@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
 using Expire.Models;
+using Xamarin.Forms;
+using Realms;
 
 namespace Expire.ViewModels
 {
@@ -8,18 +10,23 @@ namespace Expire.ViewModels
     {
         public AssetItemViewModel()
         {
-            _model = new AssetItem()
-			{
-				StartDate = DateTime.Today,
-				EndDate = DateTime.Today.AddYears(1)
-			};
             Title = "新建";
+
+            _model = new AssetItem();
+            StartDate = DateTime.Today;
+            EndDate = StartDate.AddYears(1);
         }
 
         public AssetItemViewModel(AssetItem model)
         {
-            _model = model;
             Title = "编辑";
+
+            _model = model;
+            Name = _model.Name;
+            Price = Convert.ToDecimal(_model.Price);
+            StartDate = _model.StartDate.Date;
+            EndDate = _model.EndDate.Date;
+            Remark = _model.Remark;
         }
 
         public string Title
@@ -28,41 +35,44 @@ namespace Expire.ViewModels
             private set;
         }
 
+        private string _name;
         public string Name
 		{
-			get => _model.Name;
+            get => _name;
 			set
 			{
-				if (_model.Name != value)
+				if (_name != value)
 				{
-					_model.Name = value;
+					_name = value;
 					RaisePropertyChanged();
 				}
 			}
 		}
 
+        private decimal _price;
         public decimal Price
         {
-            get => _model.Price;
+            get => _price;
             set
             {
-                if (_model.Price != value)
+                if (_price != value)
                 {
-                    _model.Price = value;
+                    _price = value;
                     RaisePropertyChanged();
                     RaisePropertyChanged("AverageValue");
                 }
             }
         }
 
+        private DateTime _startDate;
 		public DateTime StartDate
 		{
-			get => _model.StartDate;
+			get => _startDate;
 			set
 			{
-				if (_model.StartDate != value)
+				if (_startDate != value)
 				{
-					_model.StartDate = value;
+					_startDate = value;
 					RaisePropertyChanged();
                     RaisePropertyChanged("ElapsedDays");
                     RaisePropertyChanged("TotalDays");
@@ -72,14 +82,15 @@ namespace Expire.ViewModels
 			}
 		}
 
+        private DateTime _endDate;
 		public DateTime EndDate
 		{
-			get => _model.EndDate;
+			get => _endDate;
 			set
 			{
-				if (_model.EndDate != value)
+				if (_endDate != value)
 				{
-					_model.EndDate = value;
+					_endDate = value;
 					RaisePropertyChanged();
 					RaisePropertyChanged("TotalDays");
 					RaisePropertyChanged("ElapsedRate");
@@ -88,28 +99,52 @@ namespace Expire.ViewModels
 			}
 		}
 
+        private string _remark;
 		public string Remark
 		{
-			get => _model.Remark;
+			get => _remark;
 			set
 			{
-				if (_model.Remark != value)
+				if (_remark != value)
 				{
-					_model.Remark = value;
+					_remark = value;
 					RaisePropertyChanged();
 				}
 			}
 		}
 
-		public int ElapsedDays => (DateTime.Today - StartDate).Days;
+        public int ElapsedDays => (DateTime.Today - StartDate).Days;
 		public int TotalDays => (EndDate - StartDate).Days;
 		public double ElapsedRate => (double)ElapsedDays / TotalDays;
-		public decimal AverageValue => Price / TotalDays;
+        public decimal AverageValue => Price / TotalDays;
 
 		public ICommand SaveCommand
 		{
-			get;
-			set;
+            get
+            {
+                return new Command(() => 
+                {
+                    var db = Realm.GetInstance();
+
+                    if (Title == "新建")
+                    {
+                        db.Write(() =>
+                        {
+                            CopyValuesTo(_model);
+                            db.Add(_model);
+                        });
+
+                        MessagingCenter.Send<AssetItemViewModel>(this, "AssetItemCreated");
+                    }
+                    else
+                    {
+						db.Write(() =>
+						{
+                            CopyValuesTo(_model);
+						});
+                    }
+                });
+            }
 		}
 
 		public ICommand RemoveCommand
@@ -118,6 +153,15 @@ namespace Expire.ViewModels
 			set;
 		}
 
-        protected AssetItem _model;
+        private void CopyValuesTo(AssetItem target)
+        {
+			target.Name = Name;
+			target.Price = Convert.ToDouble(Price);
+			target.StartDate = StartDate;
+			target.EndDate = EndDate;
+			target.Remark = Remark;
+        }
+
+        private AssetItem _model;
     }
 }

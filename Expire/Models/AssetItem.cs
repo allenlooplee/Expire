@@ -1,8 +1,9 @@
 ﻿using System;
+using Realms;
 
 namespace Expire.Models
 {
-    public class AssetItem
+    public class AssetItem : RealmObject
     {
         public string Name
         {
@@ -10,19 +11,19 @@ namespace Expire.Models
             set;
         }
 
-        public decimal Price
+        public double Price
 		{
 			get;
 			set;
 		}
 
-        public DateTime StartDate
+        public DateTimeOffset StartDate
         {
             get;
             set;
         }
 
-        public DateTime EndDate
+        public DateTimeOffset EndDate
         {
             get;
             set;

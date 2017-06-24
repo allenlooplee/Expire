@@ -29,24 +29,11 @@ namespace Expire.ViewModels
             Remark = _model.Remark;
         }
 
-        public string Title
-        {
-            get;
-            private set;
-        }
-
         private string _name;
         public string Name
 		{
             get => _name;
-			set
-			{
-				if (_name != value)
-				{
-					_name = value;
-					RaisePropertyChanged();
-				}
-			}
+            set => SetProperty(ref _name, value);
 		}
 
         private decimal _price;
@@ -55,10 +42,8 @@ namespace Expire.ViewModels
             get => _price;
             set
             {
-                if (_price != value)
+                if (SetProperty(ref _price, value))
                 {
-                    _price = value;
-                    RaisePropertyChanged();
                     RaisePropertyChanged("AverageValue");
                 }
             }
@@ -70,10 +55,8 @@ namespace Expire.ViewModels
 			get => _startDate;
 			set
 			{
-				if (_startDate != value)
+                if (SetProperty(ref _startDate, value))
 				{
-					_startDate = value;
-					RaisePropertyChanged();
                     RaisePropertyChanged("ElapsedDays");
                     RaisePropertyChanged("TotalDays");
                     RaisePropertyChanged("ElapsedRate");
@@ -88,10 +71,8 @@ namespace Expire.ViewModels
 			get => _endDate;
 			set
 			{
-				if (_endDate != value)
+                if (SetProperty(ref _endDate, value))
 				{
-					_endDate = value;
-					RaisePropertyChanged();
 					RaisePropertyChanged("TotalDays");
 					RaisePropertyChanged("ElapsedRate");
 					RaisePropertyChanged("AverageValue");
@@ -103,14 +84,7 @@ namespace Expire.ViewModels
 		public string Remark
 		{
 			get => _remark;
-			set
-			{
-				if (_remark != value)
-				{
-					_remark = value;
-					RaisePropertyChanged();
-				}
-			}
+            set => SetProperty(ref _remark, value);
 		}
 
         public int ElapsedDays => (DateTime.Today - StartDate).Days;

@@ -57,11 +57,14 @@
       <DependentUpon>EditAssetItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AssetItemViewModel.cs" />
+    <Compile Include="Utils\ObservableObject.cs" />
+    <Compile Include="Utils\ObservableRangeCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="PersistenceModels\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

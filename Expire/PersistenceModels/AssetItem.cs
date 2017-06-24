@@ -1,7 +1,7 @@
 ﻿using System;
 using Realms;
 
-namespace Expire.Models
+namespace Expire.PersistenceModels
 {
     public class AssetItem : RealmObject
     {

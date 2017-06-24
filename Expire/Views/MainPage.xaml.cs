@@ -11,8 +11,6 @@ namespace Expire.Views
         public MainPage()
         {
             InitializeComponent();
-
-            BindingContext = new MainViewModel();
         }
 
         private void NewButton_Clicked(object sender, System.EventArgs e)
@@ -27,12 +25,7 @@ namespace Expire.Views
 
         private void ListView_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            var targetPage = new ViewAssetItemPage()
-            {
-                BindingContext = e.Item
-            };
-
-            Navigation.PushAsync(targetPage);
+            Navigation.PushAsync(new ViewAssetItemPage());
         }
     }
 }

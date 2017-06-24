@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using Expire.Views;
+using Expire.ViewModels;
 
 namespace Expire
 {
@@ -26,5 +27,8 @@ namespace Expire
         {
             // Handle when your app resumes
         }
+
+        private static MainViewModel _mainViewModel = new MainViewModel();
+        public static MainViewModel MainViewModel => _mainViewModel;
     }
 }

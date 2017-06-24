@@ -47,7 +47,7 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\AssetItem.cs" />
+    <Compile Include="PersistenceModels\AssetItem.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\ViewAssetItemPage.xaml.cs">
@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
-    <Folder Include="Models\" />
+    <Folder Include="PersistenceModels\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>

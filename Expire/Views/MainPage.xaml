@@ -2,17 +2,14 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Expire;assembly=Expire"
     x:Class="Expire.Views.MainPage"
-    Title="资产列表">
+    Title="资产列表"
+    BindingContext="{x:Static local:App.MainViewModel}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="新建" Clicked="NewButton_Clicked"/>
     </ContentPage.ToolbarItems>
-	<ListView ItemsSource="{Binding AssetList}" ItemTapped="ListView_ItemTapped">
-        <!--<ListView.Triggers>
-            <EventTrigger Event="ItemTapped">
-                
-            </EventTrigger>
-        </ListView.Triggers>-->
+	<ListView ItemsSource="{Binding AssetList}" SelectedItem="{Binding SelectedAssetItem, Mode=OneWayToSource}" ItemTapped="ListView_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

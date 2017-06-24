@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
-using Expire.Models;
+using Expire.PersistenceModels;
 using Xamarin.Forms;
 using Realms;
 
@@ -134,7 +134,7 @@ namespace Expire.ViewModels
                             db.Add(_model);
                         });
 
-                        MessagingCenter.Send<AssetItemViewModel>(this, "AssetItemCreated");
+                        App.MainViewModel.AssetList.Add(this);
                     }
                     else
                     {
@@ -149,8 +149,19 @@ namespace Expire.ViewModels
 
 		public ICommand RemoveCommand
 		{
-			get;
-			set;
+            get
+            {
+                return new Command(() =>
+                {
+                    var db = Realm.GetInstance();
+                    db.Write(() =>
+                    {
+                        db.Remove(_model);
+                    });
+
+                    App.MainViewModel.AssetList.Remove(this);
+                });
+            }
 		}
 
         private void CopyValuesTo(AssetItem target)

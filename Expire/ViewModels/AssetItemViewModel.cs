@@ -90,7 +90,7 @@ namespace Expire.ViewModels
         public int ElapsedDays => (DateTime.Today - StartDate).Days;
 		public int TotalDays => (EndDate - StartDate).Days;
 		public double ElapsedRate => (double)ElapsedDays / TotalDays;
-        public decimal AverageValue => Price / TotalDays;
+        public decimal AverageDepreciation => Price / TotalDays;
 
 		public ICommand SaveCommand
 		{

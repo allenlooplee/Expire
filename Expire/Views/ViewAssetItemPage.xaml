@@ -9,12 +9,35 @@
 	<ContentPage.ToolbarItems>
         <ToolbarItem Text="编辑" Clicked="EditButton_Clicked"/>
     </ContentPage.ToolbarItems>
-    <StackLayout Margin="16">
-        <Label Text="{Binding Price, StringFormat='价格: {0}'}"/>
-        <Label Text="{Binding AverageValue, StringFormat='日均价格: {0:f2}'}"/>
-        <Label Text="{Binding StartDate, StringFormat='开始日期: {0:d}'}"/>
-        <Label Text="{Binding EndDate, StringFormat='结束日期: {0:d}'}"/>
-        <Label Text="{Binding ElapsedRate, StringFormat='耗损比例: {0:p2}'}"/>
-        <Label Text="{Binding Remark}"/>
-    </StackLayout>
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="Red" HeightRequest="160" WidthRequest="160" Grid.ColumnSpan="2" HorizontalOptions="Start" Margin="0,0,0,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ElapsedRate, StringFormat='{0:p0}'}" TextColor="White" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="折旧率" TextColor="White" FontSize="Micro" HorizontalOptions="Start" Grid.Row="1" Margin="8,0,8,8"/>
+        </Grid>
+        <Label Text="价格" Grid.Row="1" Margin="0,0,8,0"/>
+        <Label Text="{Binding Price}" Grid.Row="1" Grid.Column="1"/>
+        <Label Text="日均折旧" Grid.Row="2" Margin="0,0,8,0"/>
+        <Label Text="{Binding AverageDepreciation, StringFormat='{0:f2}'}" Grid.Row="2" Grid.Column="1"/>
+        <Label Text="服役日期" Grid.Row="3" Margin="0,0,8,0"/>
+        <Label Text="{Binding StartDate, StringFormat='{0:d}'}" Grid.Row="3" Grid.Column="1"/>
+        <Label Text="退役日期" Grid.Row="4" Margin="0,0,8,0"/>
+        <Label Text="{Binding EndDate, StringFormat='{0:d}'}" Grid.Row="4" Grid.Column="1"/>
+        <Label Text="{Binding Remark}"  Grid.Row="5" Grid.ColumnSpan="2"/>
+    </Grid>
 </ContentPage>

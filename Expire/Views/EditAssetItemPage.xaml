@@ -10,7 +10,7 @@
     <StackLayout>
         <TableView Intent="Form">
             <TableRoot>
-                <TableSection Title="Asset Information">
+                <TableSection Title="资产明细">
                     <EntryCell Label="名称" Text="{Binding Name, Mode=TwoWay}" Placeholder="输入名称" Keyboard="Text"/>
                     <EntryCell Label="价格" Text="{Binding Price, Mode=TwoWay}" Keyboard="Numeric"/>
                     <ViewCell>

@@ -9,23 +9,46 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="新建" Clicked="NewButton_Clicked"/>
     </ContentPage.ToolbarItems>
-	<ListView ItemsSource="{Binding AssetList}" SelectedItem="{Binding SelectedAssetItem, Mode=OneWayToSource}" ItemTapped="ListView_ItemTapped">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <ViewCell.ContextActions>
-                        <MenuItem Text="删除" Command="{Binding RemoveCommand}" IsDestructive="true"/>
-                    </ViewCell.ContextActions>
-                    <Grid VerticalOptions="Center" Margin="16,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Text="{Binding Name}" Grid.Column="0"/>
-                        <Label Text="{Binding Price}" Grid.Column="1"/>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+        <Grid BackgroundColor="Red">
+            <Grid Margin="16" HeightRequest="160">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="今日总折旧" FontSize="Micro" TextColor="White"/>
+                <Label Text="{Binding TodayTotalDepreciation, StringFormat='{0:f2}'}" FontSize="48" TextColor="White" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Label Text="{Binding NormalLoadAssetItemCount, StringFormat='正常服役  {0}'}" FontSize="Micro" TextColor="White" Grid.Row="2"/>
+                <Label Text="{Binding OverloadAssetItemCount, StringFormat='超期服役  {0}'}" FontSize="Micro" TextColor="White" Grid.Row="2" Grid.Column="1"/>
+            </Grid>
+        </Grid>
+        <ListView ItemsSource="{Binding AssetList}" SelectedItem="{Binding SelectedAssetItem, Mode=OneWayToSource}" ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="删除" Command="{Binding RemoveCommand}" IsDestructive="true"/>
+                        </ViewCell.ContextActions>
+                        <Grid VerticalOptions="Center" Margin="16,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid BackgroundColor="Red" Margin="0,0,8,0" HeightRequest="36" WidthRequest="36" VerticalOptions="Center">
+                                <Label Text="{Binding ElapsedRate, StringFormat='{0:p0}'}" FontSize="Small" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Grid>
+                            <Label Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center"/>
+                            <Label Text="{Binding Price}" Grid.Column="2" VerticalOptions="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

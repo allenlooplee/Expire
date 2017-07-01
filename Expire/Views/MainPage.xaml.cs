@@ -27,5 +27,10 @@ namespace Expire.Views
         {
             Navigation.PushAsync(new ViewAssetItemPage());
         }
+
+        void MainPage_Appearing(object sender, System.EventArgs e)
+        {
+            App.MainViewModel.SelectedAssetItem = null;
+        }
     }
 }

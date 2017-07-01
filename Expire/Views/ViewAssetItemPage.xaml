@@ -11,18 +11,16 @@
     </ContentPage.ToolbarItems>
     <Grid Margin="16">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid BackgroundColor="Red" HeightRequest="160" WidthRequest="160" Grid.ColumnSpan="2" HorizontalOptions="Start" Margin="0,0,0,8">
+        <Grid BackgroundColor="Red" HeightRequest="140" WidthRequest="140" Grid.ColumnSpan="2" HorizontalOptions="Start" Margin="0,0,0,8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -30,7 +28,60 @@
             <Label Text="{Binding ElapsedRate, StringFormat='{0:p0}'}" TextColor="White" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center"/>
             <Label Text="折旧率" TextColor="White" FontSize="Micro" HorizontalOptions="Start" Grid.Row="1" Margin="8,0,8,8"/>
         </Grid>
-        <Label Text="价格" Grid.Row="1" Margin="0,0,8,0"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <BoxView BackgroundColor="Red" WidthRequest="4" Grid.RowSpan="2"/>
+            <Label Text="资产价格" FontSize="Micro" TextColor="Gray" Grid.Column="1"/>
+            <Label Text="{Binding Price}" FontSize="Large" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <BoxView BackgroundColor="Red" WidthRequest="4" Grid.RowSpan="2"/>
+            <Label Text="日均折旧" FontSize="Micro" TextColor="Gray" Grid.Column="1"/>
+            <Label Text="{Binding AverageDepreciation, StringFormat='{0:f2}'}" FontSize="Large" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <BoxView BackgroundColor="Red" WidthRequest="4" Grid.RowSpan="2"/>
+            <Label Text="服役日期" FontSize="Micro" TextColor="Gray" Grid.Column="1"/>
+            <Label Text="{Binding StartDate, StringFormat='{0:d}'}" FontSize="Large" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <BoxView BackgroundColor="Red" WidthRequest="4" Grid.RowSpan="2"/>
+            <Label Text="退役日期" FontSize="Micro" TextColor="Gray" Grid.Column="1"/>
+            <Label Text="{Binding EndDate, StringFormat='{0:d}'}" FontSize="Large" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Label Text="{Binding Remark}" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
+        <!--<Label Text="价格" Grid.Row="1" Margin="0,0,8,0"/>
         <Label Text="{Binding Price}" Grid.Row="1" Grid.Column="1"/>
         <Label Text="日均折旧" Grid.Row="2" Margin="0,0,8,0"/>
         <Label Text="{Binding AverageDepreciation, StringFormat='{0:f2}'}" Grid.Row="2" Grid.Column="1"/>
@@ -38,6 +89,6 @@
         <Label Text="{Binding StartDate, StringFormat='{0:d}'}" Grid.Row="3" Grid.Column="1"/>
         <Label Text="退役日期" Grid.Row="4" Margin="0,0,8,0"/>
         <Label Text="{Binding EndDate, StringFormat='{0:d}'}" Grid.Row="4" Grid.Column="1"/>
-        <Label Text="{Binding Remark}"  Grid.Row="5" Grid.ColumnSpan="2"/>
+        <Label Text="{Binding Remark}"  Grid.Row="5" Grid.ColumnSpan="2"/>-->
     </Grid>
 </ContentPage>

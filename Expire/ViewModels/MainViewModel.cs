@@ -7,10 +7,11 @@ using Realms;
 
 namespace Expire.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : ViewModelBase
     {
         public MainViewModel()
         {
+            Title = "资产列表";
             AssetList = new ObservableCollection<AssetItemViewModel>();
 
             var db = Realm.GetInstance();
@@ -32,10 +33,11 @@ namespace Expire.ViewModels
             private set;
         }
 
+        private AssetItemViewModel _selectedAssetItem;
         public AssetItemViewModel SelectedAssetItem
         {
-            get;
-            set;
+            get => _selectedAssetItem;
+            set => SetProperty(ref _selectedAssetItem, value);
         }
 
         public decimal TodayTotalDepreciation

@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Expire;assembly=Expire"
     x:Class="Expire.Views.MainPage"
-    Title="资产列表"
-    BindingContext="{x:Static local:App.MainViewModel}">
+    Title="{Binding Title}"
+    BindingContext="{x:Static local:App.MainViewModel}" Appearing="MainPage_Appearing">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="新建" Clicked="NewButton_Clicked"/>
     </ContentPage.ToolbarItems>
@@ -27,7 +27,7 @@
                 <Label Text="{Binding OverloadAssetItemCount, StringFormat='超期服役  {0}'}" FontSize="Micro" TextColor="White" Grid.Row="2" Grid.Column="1"/>
             </Grid>
         </Grid>
-        <ListView ItemsSource="{Binding AssetList}" SelectedItem="{Binding SelectedAssetItem, Mode=OneWayToSource}" ItemTapped="ListView_ItemTapped">
+        <ListView ItemsSource="{Binding AssetList}" SelectedItem="{Binding SelectedAssetItem, Mode=TwoWay}" ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

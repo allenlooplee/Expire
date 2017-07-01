@@ -17,6 +17,12 @@ namespace Expire.PersistenceModels
 			set;
 		}
 
+        public DateTimeOffset PurchaseDate
+        {
+            get;
+            set;
+        }
+
         public DateTimeOffset StartDate
         {
             get;
@@ -29,7 +35,13 @@ namespace Expire.PersistenceModels
             set;
         }
 
-		public string Remark
+        public DateTimeOffset ExpirationDate
+        {
+            get;
+            set;
+        }
+
+        public string Remark
 		{
 			get;
 			set;

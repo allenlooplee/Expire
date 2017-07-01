@@ -142,8 +142,10 @@ namespace Expire.ViewModels
         {
 			target.Name = Name;
 			target.Price = Convert.ToDouble(Price);
+            target.PurchaseDate = StartDate;
 			target.StartDate = StartDate;
 			target.EndDate = EndDate;
+            target.ExpirationDate = EndDate;
 			target.Remark = Remark;
         }
 

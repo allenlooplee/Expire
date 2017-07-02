@@ -109,6 +109,7 @@ namespace Expire.ViewModels
                         });
 
                         App.MainViewModel.AssetList.Add(this);
+                        Title = "编辑";
                     }
                     else
                     {

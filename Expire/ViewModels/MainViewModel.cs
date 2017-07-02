@@ -22,6 +22,8 @@ namespace Expire.ViewModels
 				AssetList.Add(assetItemViewModel);
             }
 
+            // The below properties should notify changes
+            // after the related asset item properties updates.
             NormalLoadAssetItemCount = AssetList.Count(arg => arg.EndDate >= DateTime.Today);
             OverloadAssetItemCount = AssetList.Count(arg => arg.EndDate < DateTime.Today);
             TodayTotalDepreciation = AssetList.Where(arg => arg.EndDate >= DateTime.Today).Sum(arg => arg.AverageDepreciation);
